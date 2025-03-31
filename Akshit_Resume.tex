@@ -1,0 +1,184 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez (Adapted for Akshit Soni)
+% Based off of: https://github.com/jakegut/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{ragged2e} % For justified text
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Margins unchanged from previous version (~0.5in on both sides)
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1in}
+
+\urlstyle{same}
+
+\raggedbottom
+\setlength{\tabcolsep}{-5in}
+
+% Sections formatting with reduced spacing
+\titleformat{\section}{
+  \vspace{-13pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands with reduced spacing
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    \justify{#1} \vspace{-0.9pt}
+  }
+}
+
+% Single-column subheading with right-aligned date/location
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+  \begin{flushleft}
+    \textbf{#1} \hfill #2 \\
+    \textit{\small#3} \hfill \textit{\small #4}
+  \end{flushleft}\vspace{-1pt}
+}
+
+% For university with CGPA on next line
+\newcommand{\resumeSubheadingWithCGPA}[5]{
+  \vspace{-1pt}\item
+  \begin{flushleft}
+    \textbf{#1} \hfill #2 \\
+    \textit{\small#3} \hfill \textit{\small #4} \\
+    \textit{\small#5}
+  \end{flushleft}\vspace{-1pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.25in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-3.4pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Large \scshape Akshit Soni} \\ \vspace{1pt}
+    \small +91 9358841182 $|$ \href{mailto:soniakshit15502@gmail.com}{\underline{soniakshit15502@gmail.com}} $|$ 
+    \href{https://www.linkedin.com/in/akshit-soni-627745232/}{\underline{linkedin.com/in/akshit-soni-627745232}} $|$
+    \href{https://github.com/Akshit-Soni}{\underline{github.com/Akshit-Soni}}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeSubheadingWithCGPA
+      {Vellore Institute of Technology, Bhopal}{Bhopal, Madhya Pradesh}
+      {Integrated MTech in Computer Science and Engineering - Artificial Intelligence}{Expected May 2026}
+      {Cumulative CGPA: 8.32}
+    \resumeSubheading
+      {Tagore Public School}{Jaipur, Rajasthan}
+      {12\textsuperscript{th} CBSE Board: 88.20\%}{March 2019 -- March 2020}
+    \resumeSubheading
+      {Tagore Public School}{Jaipur, Rajasthan}
+      {10\textsuperscript{th} CBSE Board: 92.00\%}{}
+  \resumeSubHeadingListEnd
+
+%-----------CERTIFICATIONS-----------
+\section{CERTIFICATIONS}
+  \resumeSubHeadingListStart
+      \resumeItem{• Computer Vision - VITyarthi ~~~~~~~~~~~~~~~~~~~~~~~~ • Applied ML in Python - Coursera ~~~~~~~~~~~~~~~~~~~~~~~~ • Cloud Computing - NPTEL}
+  \resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{TECHNICAL SKILLS}
+  \resumeSubHeadingListStart
+    \resumeItem{Python, Java, SQL, Office 365}
+  \resumeSubHeadingListEnd
+
+%-----------CO-CURRICULAR EXPERIENCE-----------
+\section{CO-CURRICULAR EXPERIENCE}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {AI Trainer | Freelancer}{Jaipur, Rajasthan (Remote)}
+      {DataAnnotations Tech}{October 2024 -- Present}
+      \resumeItemListStart
+        \resumeItem{Conducted comprehensive testing of LLM models across 200+ test cases from diverse domains, including brainstorming content, extraction, data generation, code generation, and math solving.}
+        \resumeItem{Performed multilingual testing and evaluation across 5 parameters and in three languages, including English, Hindi (Devanagari), and Hindi (Latin), to enhance AI model localization and performance.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{PROJECTS}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Crop Health Detection using Artificial Intelligence}{Bhopal, Madhya Pradesh}
+      {University Level Project}{January 2024 -- April 2024}
+      \resumeItemListStart
+        \resumeItem{Implemented an AI-driven system to assess sugarcane crop health using advanced machine learning techniques, integrating 4 different models: DenseNet201, CNN, VGG19 and ResNet50.}
+        \resumeItem{Achieved 92\% overall accuracy in detecting and classifying crop conditions, including disease, pest infestation, and nutrient deficiencies, by leveraging deep learning architectures.}
+        \resumeItem{Reduced operational costs for farmers by an estimated 30\% through accurate early detection of diseases and targeted resource application.}
+        \resumeItem{Collaborated with a team of 10 developers to develop and deploy a scalable AI solution adapted to sugarcane crop and geographic regions.}
+      \resumeItemListEnd
+    \resumeSubheading
+      {Face Recognition}{Jaipur, Rajasthan}
+      {Personal Project}{February 2022 -- February 2022}
+      \resumeItemListStart
+        \resumeItem{Developed a face recognition system using KNN and SVM algorithms by collecting a dataset of 400-500 images, ensuring optimal image data preprocessing for achieving accurate recognition results in real-time applications.}
+        \resumeItem{Incorporated Python-based libraries for image evaluation and model training, gaining experience in fine-tuning outputs and managing input data.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------EXTRA CURRICULAR ACTIVITIES-----------
+\section{EXTRA CURRICULAR ACTIVITIES}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Vice President}{Bhopal, Madhya Pradesh}
+      {Android Club, VIT Bhopal}{June 2023 -- May 2024}
+      \resumeItemListStart
+        \resumeItem{Led 10 teams (SDC, Android, Event Management, Design, Operations, Finance) to organize 7 events, boosting student engagement by 1500\% and mentoring 80+ club members to improve technical skills and communication.}
+        \resumeItem{Streamlined workflows for 20\% higher efficiency and implemented feedback loops to enhance event quality and relevance.}
+      \resumeItemListEnd
+    \resumeSubheading
+      {Discipline Committee Member}{Bhopal, Madhya Pradesh}
+      {AdVITya Annual Fest, VIT Bhopal}{February 2024 -- February 2024}
+      \resumeItemListStart
+        \resumeItem{Managed discipline and coordinated logistics for Advitya Fest, which hosted 2500+ student participants and 50+ events across university clubs.}
+        \resumeItem{Co-ordinated closely with faculties to ensure smooth execution, contributing to a well-organized and engaging festival experience.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------HOBBIES & INTERESTS-----------
+\section{HOBBIES \& INTERESTS}
+  \resumeSubHeadingListStart
+    \resumeItem{Cooking | Space Enthusiast | Game Development | 3D Animation}
+  \resumeSubHeadingListEnd
+
+%-----------LANGUAGES-----------
+\section{LANGUAGES}
+  \resumeSubHeadingListStart
+    \resumeItem{English - Highly Proficient | Hindi - Native}
+  \resumeSubHeadingListEnd
+
+\end{document}
