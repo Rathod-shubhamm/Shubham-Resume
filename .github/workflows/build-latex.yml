@@ -48,13 +48,7 @@ jobs:
           sudo sed -i 's/name="memory" value="[^"]*"/name="memory" value="2GiB"/' /etc/ImageMagick-6/policy.xml
       
       - name: Convert PDF to PNG
-        run: |
-          # Higher density for better resolution, exact profile to prevent color shift
-          convert -density 600 -background white -alpha remove \
-            -define png:color-type=2 -depth 8 \
-            -flatten -strip -fuzz 1% \
-            "Akshit Soni.pdf" -resize 1200x -quality 100 \
-            -colorspace sRGB -set colorspace sRGB resume.png
+        run: convert -density 900 -background white -alpha off "Akshit Soni.pdf" -resize 25% -quality 90 -colorspace RGB resume.png
       
       - name: Update README with image
         run: |
