@@ -1,10 +1,8 @@
-name: Build LaTeX document
+name: Build LaTeX Resume
 on:
   push:
-    paths-ignore:
-      - 'resume.png'
-      - 'main.pdf'
-      - '**.md'
+    paths:
+      - 'Akshit_Resume.tex'
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
@@ -20,21 +18,19 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: main.tex
+          root_file: Akshit_Resume.tex
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+          work_in_root_file_dir: true
+      
+      - name: Rename output PDF
+        run: |
+          mv Akshit_Resume.pdf "Akshit Soni.pdf"
       
       - name: Uploading artifact
         uses: actions/upload-artifact@v4
         with:
           name: PDF
-          path: main.pdf
-      
-      - name: Get Time
-        id: time
-        uses: nanzm/get-time-action@v1.1
-        with:
-          timeZone: 8  # Adjust timezone as needed
-          format: 'YYYY-MM-DD-HH-mm-ss'
+          path: "Akshit Soni.pdf"
       
       - name: Install ghostscript and imagemagick
         run: |
@@ -43,31 +39,43 @@ jobs:
       
       - name: Change ImageMagick security policy
         run: |
-          DQT='"' 
-          SRC="rights=${DQT}none${DQT} pattern=${DQT}PDF${DQT}"
-          RPL="rights=${DQT}read\|write${DQT} pattern=${DQT}PDF${DQT}"
-          
-          # Update ImageMagick policy to allow PDF processing
-          sudo sed -i "s/$SRC/$RPL/" /etc/ImageMagick-6/policy.xml
-          
-          # Increase resource limits in policy.xml
-          sudo sed -i "s/name=\"height\" value=\"[^\"]*\"/name=\"height\" value=\"128KP\"/" /etc/ImageMagick-6/policy.xml
-          sudo sed -i "s/name=\"width\" value=\"[^\"]*\"/name=\"width\" value=\"128KP\"/" /etc/ImageMagick-6/policy.xml
-          sudo sed -i "s/name=\"area\" value=\"[^\"]*\"/name=\"area\" value=\"128MP\"/" /etc/ImageMagick-6/policy.xml
-          sudo sed -i "s/name=\"disk\" value=\"[^\"]*\"/name=\"disk\" value=\"8GiB\"/" /etc/ImageMagick-6/policy.xml
-          sudo sed -i "s/name=\"map\" value=\"[^\"]*\"/name=\"map\" value=\"4GiB\"/" /etc/ImageMagick-6/policy.xml
-          sudo sed -i "s/name=\"memory\" value=\"[^\"]*\"/name=\"memory\" value=\"2GiB\"/" /etc/ImageMagick-6/policy.xml
+          sudo sed -i 's/rights="none" pattern="PDF"/rights="read|write" pattern="PDF"/' /etc/ImageMagick-6/policy.xml
+          sudo sed -i 's/name="height" value="[^"]*"/name="height" value="128KP"/' /etc/ImageMagick-6/policy.xml
+          sudo sed -i 's/name="width" value="[^"]*"/name="width" value="128KP"/' /etc/ImageMagick-6/policy.xml
+          sudo sed -i 's/name="area" value="[^"]*"/name="area" value="128MP"/' /etc/ImageMagick-6/policy.xml
+          sudo sed -i 's/name="disk" value="[^"]*"/name="disk" value="8GiB"/' /etc/ImageMagick-6/policy.xml
+          sudo sed -i 's/name="map" value="[^"]*"/name="map" value="4GiB"/' /etc/ImageMagick-6/policy.xml
+          sudo sed -i 's/name="memory" value="[^"]*"/name="memory" value="2GiB"/' /etc/ImageMagick-6/policy.xml
       
       - name: Convert PDF to PNG
-        run: convert -density 900 -background white -alpha off main.pdf -resize 25% -quality 90 -colorspace RGB resume.png
+        run: convert -density 300 -background white -alpha off "Akshit Soni.pdf" -resize 800x -quality 95 -colorspace RGB resume.png
       
-      - name: Commit PNG and PDF
-        id: commit
+      - name: Update README with image
+        run: |
+          # Create or update README.md with image
+          if [ -f README.md ]; then
+            # Check if README already has the image
+            if grep -q "!\[Resume\]" README.md; then
+              echo "Image already in README, updating timestamp only"
+            else
+              # Add image to README
+              echo -e "\n## Resume Preview\n\n![Resume](resume.png)\n" >> README.md
+            fi
+          else
+            # Create new README with image
+            echo -e "# Akshit Soni's Resume\n\n## Resume Preview\n\n![Resume](resume.png)\n" > README.md
+          fi
+          
+          # Add last updated timestamp
+          sed -i '/Last updated:/d' README.md
+          echo -e "\nLast updated: $(date '+%B %d, %Y')" >> README.md
+      
+      - name: Commit changes
         run: |
           git config --local user.email "action[bot]@github.com"
           git config --local user.name "github-actions[bot]"
-          git add resume.png main.pdf
-          git commit -m "[bot] updated resume.png and main.pdf at ${{ steps.time.outputs.time }}" || echo "No changes to commit"
+          git add "Akshit Soni.pdf" resume.png README.md
+          git commit -m "[Automated] Update resume PDF and preview image" || echo "No changes to commit"
       
       - name: Push changes
         uses: ad-m/github-push-action@master
