@@ -19,7 +19,6 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: Akshit_Resume.tex
-          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
           work_in_root_file_dir: true
       
       - name: Rename output PDF
@@ -48,7 +47,7 @@ jobs:
           sudo sed -i 's/name="memory" value="[^"]*"/name="memory" value="2GiB"/' /etc/ImageMagick-6/policy.xml
       
       - name: Convert PDF to PNG
-        run: convert -density 900 -background white -alpha off "Akshit Soni.pdf" -resize 25% -quality 90 -colorspace RGB resume.png
+        run: convert -density 900 -background white -alpha off "Akshit Soni.pdf" -resize 25% -quality 90 -colorspace RGB Akshit Soni.png
       
       - name: Update README with image
         run: |
@@ -63,7 +62,7 @@ jobs:
             fi
           else
             # Create new README with image
-            echo -e "# Akshit Soni's Resume\n\n## Resume Preview\n\n![Resume](resume.png)\n" > README.md
+            echo -e "# Akshit Soni's Resume\n\n![Resume](resume.png)\n" > README.md
           fi
           
           # Add last updated timestamp
