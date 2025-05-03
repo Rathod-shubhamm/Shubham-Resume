@@ -47,7 +47,12 @@ jobs:
           sudo sed -i 's/name="memory" value="[^"]*"/name="memory" value="2GiB"/' /etc/ImageMagick-6/policy.xml
       
       - name: Convert PDF to PNG
-        run: convert -density 900 -background white -alpha off "Akshit Soni.pdf" -resize 25% -quality 90 -colorspace RGB Akshit Soni.png
+        run: |
+          # Using explicit shell escaping for filenames with spaces
+          INPUT_PDF="Akshit Soni.pdf"
+          OUTPUT_PNG="resume.png"
+
+          convert -density 900 -background white -alpha off "$INPUT_PDF" -resize 25% -quality 90 -colorspace RGB "$OUTPUT_PNG"
       
       - name: Update README with image
         run: |
