@@ -49,7 +49,7 @@
 % Custom commands with reduced spacing
 \newcommand{\resumeItem}[1]{
   \item\small{
-    \justify{#1} \vspace{-0.9pt}
+    \justify{#1} \vspace{-1.9pt}
   }
 }
 
@@ -75,7 +75,7 @@
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.25in]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-3.4pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2pt}}
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -133,6 +133,14 @@
 \section{PROJECTS}
   \resumeSubHeadingListStart
     \resumeSubheading
+      {Crime Data Analysis and Prediction}{Jaipur, Rajasthan}
+      {Team Project}{May 2024 -- August 2024}
+      \resumeItemListStart
+        \resumeItem{Engineered end-to-end data pipeline for a 4,91,007-record crime dataset: cleaned and imputed 6800+ missing entries, parsed and extracted 7 temporal features, and encoded 12 categorical variables using pandas and NumPy, reducing preprocessing time by 30\%.}
+        \resumeItem{Applied advanced clustering techniques (K-Means, DBSCAN, hierarchical) at scale-—over 4,90,000 samples—-to uncover 8 high-risk crime zones and synthetic features for model input, leveraging scikit-learn to automate hotspot detection.}
+        \resumeItem{Built and evaluated 4 ML classifiers (GaussianNB, Decision Tree, Random Forest, Logistic Regression) with stratified 5-fold cross-validation; Random Forest delivered top performance (83\% accuracy), a 20\% uplift over the naïve baseline.}
+      \resumeItemListEnd
+    \resumeSubheading
       {Crop Health Detection using Artificial Intelligence}{Bhopal, Madhya Pradesh}
       {University Level Project}{January 2024 -- April 2024}
       \resumeItemListStart
@@ -140,14 +148,6 @@
         \resumeItem{Achieved 92\% overall accuracy in detecting and classifying crop conditions, including disease, pest infestation, and nutrient deficiencies, by leveraging deep learning architectures.}
         \resumeItem{Reduced operational costs for farmers by an estimated 30\% through accurate early detection of diseases and targeted resource application.}
         \resumeItem{Collaborated with a team of 10 developers to develop and deploy a scalable AI solution adapted to sugarcane crop and geographic regions.}
-      \resumeItemListEnd
-    \resumeSubheading
-      {Crime Data Analysis and Prediction}{Jaipur, Rajasthan}
-      {Team Project}{May 2024 -- August 2024}
-      \resumeItemListStart
-        \resumeItem{Engineered end-to-end data pipeline for a 4,91,007-record crime dataset: cleaned and imputed 6800+ missing entries, parsed and extracted 7 temporal features, and encoded 12 categorical variables using pandas and NumPy, reducing preprocessing time by 30\%.}
-        \resumeItem{Applied advanced clustering techniques (K-Means, DBSCAN, hierarchical) at scale-—over 4,90,000 samples—-to uncover 8 high-risk crime zones and synthetic features for model input, leveraging scikit-learn to automate hotspot detection.}
-        \resumeItem{Built and evaluated 4 ML classifiers (GaussianNB, Decision Tree, Random Forest, Logistic Regression) with stratified 5-fold cross-validation; Random Forest delivered top performance (83\% accuracy), a 20\% uplift over the naïve baseline.}
       \resumeItemListEnd
   \resumeSubHeadingListEnd
 
@@ -174,12 +174,6 @@
 \section{HOBBIES \& INTERESTS}
   \resumeSubHeadingListStart
     \resumeItem{Cooking | Space Enthusiast | Game Development | 3D Animation}
-  \resumeSubHeadingListEnd
-
-%-----------LANGUAGES-----------
-\section{LANGUAGES}
-  \resumeSubHeadingListStart
-    \resumeItem{English - Highly Proficient | Hindi - Native}
   \resumeSubHeadingListEnd
 
 \end{document}
