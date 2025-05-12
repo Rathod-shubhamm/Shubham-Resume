@@ -2,7 +2,7 @@ name: Build LaTeX Resume
 on:
   push:
     paths:
-      - 'Shubham_Rathod.tex'
+      - 'Shubham_Resume.tex'
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
