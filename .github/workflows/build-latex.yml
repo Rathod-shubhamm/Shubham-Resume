@@ -2,7 +2,7 @@ name: Build LaTeX Resume
 on:
   push:
     paths:
-      - 'Akshit_Resume.tex'
+      - 'Shubham_Rathod.tex'
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
@@ -18,18 +18,18 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: Akshit_Resume.tex
+          root_file: Shubham_Resume.tex
           work_in_root_file_dir: true
       
       - name: Rename output PDF
         run: |
-          mv Akshit_Resume.pdf "Akshit Soni.pdf"
+          mv Shubham_Resume.pdf "Shubham Rathod.pdf"
       
       - name: Uploading artifact
         uses: actions/upload-artifact@v4
         with:
           name: PDF
-          path: "Akshit Soni.pdf"
+          path: "Shubham Rathod.pdf"
       
       - name: Install ghostscript and imagemagick
         run: |
@@ -49,7 +49,7 @@ jobs:
       - name: Convert PDF to PNG
         run: |
           # Using explicit shell escaping for filenames with spaces
-          INPUT_PDF="Akshit Soni.pdf"
+          INPUT_PDF="Shubham Rathod.pdf"
           OUTPUT_PNG="resume.png"
 
           convert -density 900 -background white -alpha off "$INPUT_PDF" -resize 25% -quality 90 -colorspace RGB "$OUTPUT_PNG"
@@ -67,7 +67,7 @@ jobs:
             fi
           else
             # Create new README with image
-            echo -e "# Akshit Soni's Resume\n\n![Resume](resume.png)\n" > README.md
+            echo -e "# Shubham Rathod's Resume\n\n![Resume](resume.png)\n" > README.md
           fi
           
           # Add last updated timestamp
@@ -78,7 +78,7 @@ jobs:
         run: |
           git config --local user.email "action[bot]@github.com"
           git config --local user.name "github-actions[bot]"
-          git add "Akshit Soni.pdf" resume.png README.md
+          git add "Shubham Rathod.pdf" resume.png README.md
           git commit -m "[Automated] Update resume PDF and preview image" || echo "No changes to commit"
       
       - name: Push changes
