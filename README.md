@@ -1,4 +1,4 @@
-# Resume: Akshit Soni
+# Resume: Shubham Rathod
 
 ![Resume](resume.png)
 
