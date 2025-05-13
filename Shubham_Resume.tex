@@ -1,13 +1,11 @@
+%-------------------------
+% Resume in Latex
+% Author : Abey George
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
 %------------------------
 
-% Resume in Latex
-% Author : Shubham Rathod (Adapted from Jake Gutierrez)
-% Based off of: https://github.com/jakegut/resume
-% License : MIT
-
-%-----------------------
-
-\documentclass[letterpaper,10pt]{article}
+\documentclass[letterpaper,11pt]{article}
 
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
@@ -17,162 +15,252 @@
 \usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
-\usepackage{fancyhdr}
 \usepackage[english]{babel}
-\usepackage{ragged2e} % For justified text
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{graphicx}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
 \input{glyphtounicode}
 
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
+\RequirePackage{fontawesome}
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
 
-% Margins unchanged from previous version (~0.5in on both sides)
-\addtolength{\oddsidemargin}{-0.5in}
+
+\definecolor{cvblue}{HTML}{0E5484}
+\definecolor{black}{HTML}{130810}
+\definecolor{darkcolor}{HTML}{0F4539}
+\definecolor{cvgreen}{HTML}{3BD80D}
+\definecolor{taggreen}{HTML}{00E278}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\colorlet{name}{black}
+\colorlet{tagline}{darkcolor}
+\colorlet{heading}{darkcolor}
+\colorlet{headingrule}{cvblue}
+\colorlet{accent}{darkcolor}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+% \pagestyle{fancy}
+% \fancyhf{}  % clear all header and footer fields
+% \fancyfoot{}
+% \renewcommand{\headrulewidth}{0pt}
+% \renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
 \addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-0.6in}
-\addtolength{\textheight}{1in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
 
 \urlstyle{same}
 
 \raggedbottom
-\setlength{\tabcolsep}{-5in}
+\raggedright
+\setlength{\tabcolsep}{0in}
 
-% Sections formatting with reduced spacing
+% Sections formatting
 \titleformat{\section}{
-  \vspace{-13pt}\scshape\raggedright\large
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
+% Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
 
 %-------------------------
-% Custom commands with reduced spacing
+% Custom commands
 \newcommand{\resumeItem}[1]{
   \item\small{
-    \justify{#1} \vspace{-1.9pt}
+    {#1 \vspace{-2pt}}
   }
 }
 
-% Single-column subheading with right-aligned date/location
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-1pt}\item
-  \begin{flushleft}
-    \textbf{#1} \hfill #2 \\
-    \textit{\small#3} \hfill \textit{\small #4}
-  \end{flushleft}\vspace{-1pt}
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{\large#1} & \textbf{\small #2} \\
+      \textit{\large#3} & \textit{\small #4} \\
+      
+    \end{tabular*}\vspace{-7pt}
 }
 
-% For university with CGPA on next line
-\newcommand{\resumeSubheadingWithCGPA}[5]{
-  \vspace{-1pt}\item
-  \begin{flushleft}
-    \textbf{#1} \hfill #2 \\
-    \textit{\small#3} \hfill \textit{\small #4} \\
-    \textit{\small#5}
-  \end{flushleft}\vspace{-1pt}
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.25in]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+
+\newcommand\sbullet[1][.5]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \begin{document}
 
 %----------HEADING----------
+
+
 \begin{center}
-    \textbf{\Large \scshape Shubham Rathod} \\ \vspace{1pt}
-    \small +91 8319450574 $|$ \href{mailto:shubhamrathod1619@gmail.com}{\underline{shubhamrathod1619@gmail.com}} $|$ 
-    \href{http://www.linkedin.com/in/shubham-rathod-821a01202/}{\underline{linkedin.com/in/shubham-rathod-821a01202}} $|$
-    \href{https://github.com/Rathod-shubhamm}{\underline{github.com/Rathod-shubhamm}}
+    {\Huge \scshape Shubham Rathod} \\ \vspace{1pt}
+    \small \href{tel:+xxxxxxxxxxxx}{ \raisebox{-0.1\height}\faPhone\ \underline{+91-8319450574} ~} \href{mailto:Shubhamrathod1619@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  \underline{Shubhamrathod1619@gmail.com}} ~ 
+    \href{http://www.linkedin.com/in/shubham-rathod-821a01202/}{\raisebox{-0.2\height}\faLinkedinSquare\ \underline{shubham-rathod-821a01202}}  ~
+    \href{https://github.com/Rathod-shubhamm}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/Rathod-shubhamm}} ~
 \end{center}
+
 
 %-----------EDUCATION-----------
 \section{EDUCATION}
   \resumeSubHeadingListStart
-    \resumeSubheadingWithCGPA
-      {Vellore Institute of Technology, Bhopal}{Bhopal, Madhya Pradesh}
-      {Integrated MTech in Computer Science and Engineering - Artificial Intelligence}{Expected May 2026}
-      {Cumulative CGPA: 7.79}
     \resumeSubheading
-      {Shree Shankar School}{Dhamnod, Madhya Pradesh}
-      {12\textsuperscript{th} CBSE Board: 78.0\%}{March 2019 -- March 2020}
-    \resumeSubheading
-      {Shree Shankar School}{Dhamnod, Madhya Pradesh}
-      {10\textsuperscript{th} CBSE Board: 86.40\%}{March 2017 - April 2018}
+      {Vellore Institute of Technology ,Bhopal}{Aug 2021 -- Aug 2026}
+      {Integrated Mtech AI - \textf{7.79}  }{Bhopal, Madhya Pradesh}
   \resumeSubHeadingListEnd
-
-%-----------CERTIFICATIONS-----------
-\section{CERTIFICATIONS}
-  \resumeSubHeadingListStart
-    \resumeItem{• Solution Architect Associate - AWS}~~~~~~~~~~~~~{• Data Analysis with Python - FreeCodeCamp}
-    \resumeItem{• Cloud Computing - NPTEL} ~~~~~~~~~~~~~~~~~~~~~ {• Machine Learning with Python - FreeCodeCamp}
-  \resumeSubHeadingListEnd
-
-
-%-----------TECHNICAL SKILLS-----------
-\section{TECHNICAL SKILLS}
-  \resumeSubHeadingListStart
-    \resumeItem{Python, Java, SQL, Office 365, Machine Learning}
-  \resumeSubHeadingListEnd
-
-%-----------CO-CURRICULAR EXPERIENCE-----------
-\section{EXPERIENCE}
+  
   \resumeSubHeadingListStart
     \resumeSubheading
-      {Virtual Experience Program}{Bhopal, Madhya Pradesh(Remote)}
-      {BCG X (The Boston Consulting Group) | Forage}{February 2025 -- March 2025}
-      \resumeItemListStart
-        \resumeItem{ Completed 5+ consulting case tasks involving data analysis and business process evaluation as part of a virtual internship.}
-        \resumeItem{Analyzed and interpreted structured business data across 3 simulated client scenarios, producing 3–4 page written
-recommendations aligned with organizational objectives.}
-        \resumeItem{Applied consulting skills in data interpretation, communication, and decision-making, improving case resolution accuracy
-by an estimated 20\% through structured frameworks.}
-      \resumeItemListEnd
+      {Shree Shankar School }{Mar 2017 -- Mar 2020}
+      {Class 12th  - \textf{78.0\%}  ,Class 10th  - \textf{86.40\%}}{Dhamnod, Madhya Pradesh}
   \resumeSubHeadingListEnd
+
+%------RELEVANT COURSEWORK-------
+\section{Technical Skills}
+    %\resumeSubHeadingListStart
+        \begin{multicols}{0}
+            \begin{itemize}[itemsep=-2pt, parsep=5pt]
+                \item Machine Learning, Python, React, SQL, Gen AI
+                
+                
+            \end{itemize}
+        \end{multicols}
+        \vspace*{2.0\multicolsep}
+    %\resumeSubHeadingListEnd
+
+
 
 %-----------PROJECTS-----------
 \section{PROJECTS}
+    \vspace{-5pt}
+    \resumeSubHeadingListStart
+       \resumeProjectHeading
+           {\href{NoCap RAG.com}{\textbf{\large{\underline{ NoCap RAG}}} \href{Project Link}{\raisebox{-0.1\height}\faExternalLink }} $|$ \large{{Personal project}}}{Feb 2025}
+          \resumeItemListStart
+            \resumeItem{\normalsize{Developed an end-to-end Retrieval-Augmented Generation (RAG) system combining LangChain, Pinecone vector database, and OpenAI LLMs, improving factual accuracy in generated content by 35\%.}}
+           \resumeItem{\normalsize{Engineered a custom chatbot interface enabling users to ask questions and receive context-aware responses based on a large document corpus, reducing hallucinations in LLM output by 40\%.}}
+            \resumeItem{\normalsize{Optimized retrieval pipeline latency by 20\% through prompt engineering and indexing techniques, enhancing real-time user query performance}}
+          \resumeItemListEnd 
+          \vspace{-13pt}
+          
+      \resumeProjectHeading
+          {\href{Potato disease classifier.com}{\textbf{\large{\underline{Potato disease classifier }}} \href{Project Link}{\raisebox{-0.1\height}\faExternalLink }} $|$ \large{{Personal project}}}{Sep 2024}
+          \resumeItemListStart
+            \resumeItem{\normalsize{Built a full-stack web app to detect diseases in potato plants using leaf images, using CNN to achieve 95\% accuracy with a processing time of 5 sec per image. \textbf{}}}
+            \resumeItem{\normalsize{Designed an intuitive React-based interface that enabled seamless plant image submissions, enhancing user experience and accelerating disease prediction turnaround by 30\%. \textbf{}}}
+            \resumeItem{\normalsize{Deployed the model using TensorFlow Serving and FastAPI, resulting in a processing efficiency of under 5 seconds per image while maintaining high-performance accuracy rates.} {\href{Project Link} {\underline{\normalsize{Download}}}}}
+          \resumeItemListEnd
+          \vspace{-13pt}
+          
+          \resumeProjectHeading
+          {\href{Suchna.com}{\textbf{\large{\underline{Suchna}}} \href{Project Link}{\raisebox{-0.1\height}\faExternalLink }} $|$ \large{\underline{Team Project }}}{May 2024}
+          \resumeItemListStart
+            \resumeItem{\normalsize{Developed a web application for reporting crime incidents and missing persons, resulting quicker submission of reports that reduced the average processing time by 30\% across all case categories. \textbf{}}}
+            \resumeItem{\normalsize{ Enabled faster identification and tracking of missing persons and crime incidents by streamlining evidence submission and case management, contributing to a 30\% improvement in initial response times. \textbf{  } }}
+            \resumeItemListStart
+            
+            
+          \resumeItemListEnd 
+          
+    \resumeSubHeadingListEnd
+\vspace{-12pt}
+
+%
+
+
+%-----------EXPERIENCE-----------
+\section{Virtual INTERNSHIP}
   \resumeSubHeadingListStart
+
     \resumeSubheading
-      {Nocap RAG }{Bhopal, Madhya Pradesh}
-      {Personal Project}{November 2024 - January 2025}
+      {BCG X  Name \href{certificate Link}{\raisebox{-0.1\height}\faExternalLink }}{Feb 2025 -- Mar 2025} 
+      {{Data analyst intern }}{}
       \resumeItemListStart
-        \resumeItem{Developed an end-to-end Retrieval-Augmented Generation (RAG) system combining LangChain, Pinecone vector database, and OpenAI LLMs, improving factual accuracy in generated content by 35\%.}
-        \resumeItem{Engineered a custom chatbot interface enabling users to ask questions and receive context-aware responses based on a large document corpus, reducing hallucinations in LLM output by 40\%.}
-        \resumeItem{Optimized retrieval pipeline latency by 20\% through prompt engineering and indexing techniques, enhancing real-time user query performance}
-      \resumeItemListEnd
-       \resumeSubheading
-      {Suchna}{Bhopal, Madhya Pradesh}
-      {University Level Project}{September 2023 - May 2024}
-      \resumeItemListStart
-        \resumeItem{Developed a web-based platform for lodging crime reports and missing person cases, enhancing report intake speed and reducing average processing duration by 30\% across categories.}
-        \resumeItem{Partnered with a 10-member development team to architect and launch a robust, scalable system tailored for public safety and case documentation workflows.}
-        \resumeItem{Accelerated case resolution by optimizing the submission of digital evidence and automating early-stage case tracking, leading to a 30\% gain in first-response efficiency.}
+        \resumeItem{\normalsize{Completed 5+ consulting case tasks involving data analysis and business process evaluation as part of a virtual internship. \textbf{}}}
+        \resumeItem{\normalsize{Analyzed and interpreted structured business data across 3 simulated client scenarios, producing 3–4 page written
+        recommendations aligned with organizational objectives.\textbf{}}}
       \resumeItemListEnd  
   \resumeSubHeadingListEnd
+\vspace{-12pt}
 
-%-----------EXTRA CURRICULAR ACTIVITIES-----------
-\section{EXTRA CURRICULAR ACTIVITIES}
+
+ %-----------CERTIFICATIONS---------------
+\section{CERTIFICATIONS}
   \resumeSubHeadingListStart
-    \resumeSubheading
-      {Core Member}{Bhopal, Madhya Pradesh}
-      {IOT Club, VIT Bhopal}{June 2023 -- May 2024}
-      \resumeItemListStart
-        \resumeItem{Served as a core member of the IoT Club, actively contributing to the organization of 5 successful events}
-        \resumeItem{Played a key role in team coordination, logistics, and knowledge sharing, fostering innovation and engagement.}
-      \resumeItemListEnd
+    \resumeItem{\href{certificateLink.com}{Data Analysis with Python - FreeCodeCamp}}
+    \resumeItem{\href{certificateLink.com}{Machine Learning with Python - FreeCodeCamp}}
+    \resumeItem{\href{certificateLink.com}{AWS Solutions Architect Associate}}
+    \resumeItem{\href{certificateLink.com}{Cloud Computing - NPTEL}}
   \resumeSubHeadingListEnd
 
-%-----------HOBBIES & INTERESTS-----------
-\section{HOBBIES \& INTERESTS}
-  \resumeSubHeadingListStart
-    \resumeItem{Sports enthusiast |  Space Enthusiast |  Game Development |  3D Animation}
-  \resumeSubHeadingListEnd
+
+%-----------INVOLVEMENT---------------
+\section{EXTRACURRICULAR}
+    \resumeSubHeadingListStart
+        \resumeSubheading{IOT Club\href{Certificate Proof link}{\raisebox{-0.1\height}\faExternalLink } }{Jun 2023 -- May 2024}{\underline{Core Member}}{Bhopal, Madhya Pradesh}
+            \resumeItemListStart
+                \resumeItem{\normalsize{Served as a core member of the IoT Club, actively contributing to the organization of 5 successful events. \textbf{}}}
+                 \resumeItem{\normalsize{Played a key role in team coordination, logistics, and knowledge sharing, fostering innovation and engagement.}}
+                
+            \resumeItemListEnd
+    \resumeSubHeadingListEnd
+ \vspace{-11pt}
+ 
+
+
 
 \end{document}
