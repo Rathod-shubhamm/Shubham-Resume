@@ -20,6 +20,7 @@ jobs:
         with:
           root_file: Shubham_Resume.tex
           work_in_root_file_dir: true
+          extra_system_packages: "texlive-pictures"
       
       - name: Rename output PDF
         run: |
@@ -48,29 +49,21 @@ jobs:
       
       - name: Convert PDF to PNG
         run: |
-          # Using explicit shell escaping for filenames with spaces
           INPUT_PDF="Shubham Rathod.pdf"
           OUTPUT_PNG="resume.png"
-
           convert -density 900 -background white -alpha off "$INPUT_PDF" -resize 25% -quality 90 -colorspace RGB "$OUTPUT_PNG"
       
       - name: Update README with image
         run: |
-          # Create or update README.md with image
           if [ -f README.md ]; then
-            # Check if README already has the image
             if grep -q "!\[Resume\]" README.md; then
               echo "Image already in README, updating timestamp only"
             else
-              # Add image to README
               echo -e "\n## Resume Preview\n\n![Resume](resume.png)\n" >> README.md
             fi
           else
-            # Create new README with image
             echo -e "# Shubham Rathod's Resume\n\n![Resume](resume.png)\n" > README.md
           fi
-          
-          # Add last updated timestamp
           sed -i '/Last updated:/d' README.md
           echo -e "\nLast updated: $(date '+%B %d, %Y')" >> README.md
       
